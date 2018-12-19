@@ -6,6 +6,8 @@ from flask import Flask
 from flask import request
 from flask import make_response
 
+requests.__version__
+
 # Flask app should start in global layout
 app = Flask(__name__)
 
@@ -27,14 +29,14 @@ def makeResponse(req):
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
     date = parameters.get("date")
-    r=requests.get('http://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=06f070197b1f60e55231f8c46658d077')
-    json_object = r.json()
-    weather=json_object['list']
-    for i in range(0,30):
-        if date in weather[i]['dt_txt']:
-            condition= weather[i]['weather'][0]['description']
-            break
-    speech = "The forecast for"+city+"for "+date+" is "+condition
+#    r=requests.get('http://api.openweathermap.org/data/2.5/forecast?q='+city+'&appid=06f070197b1f60e55231f8c46658d077')
+#    json_object = r.json()
+ #   weather=json_object['list']
+#    for i in range(0,30):
+#        if date in weather[i]['dt_txt']:
+#            condition= weather[i]['weather'][0]['description']
+#            break
+    speech = "The forecast for"+city+"for "+date+" is "+ "47 C"
     return {
     "speech": speech,
     "displayText": speech,
